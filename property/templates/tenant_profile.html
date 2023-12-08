@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Profile</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tenant Profile</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Document Proofs</th>
+                <th>Property Name</th>
+                <th>Unit Rent Cost</th>
+                <th>Agreement End Date</th>
+                <th>Monthly Rent Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tenant_info in tenant_list %}
+                <tr>
+                    <td>{{ tenant_info.name }}</td>
+                    <td>{{ tenant_info.address }}</td>
+                    <td>
+                        {% if tenant_info.document_proofs %}
+                            <a href="{{ tenant_info.document_proofs }}" target="_blank">View Document</a>
+                        {% else %}
+                            No document proofs
+                        {% endif %}
+                    </td>
+                    <td>{{ tenant_info.property_name }}</td>
+                    <td>{{ tenant_info.unit }}</td>
+                    <td>{{ tenant_info.agreement_end_date }}</td>
+                    <td>{{ tenant_info.monthly_rent_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

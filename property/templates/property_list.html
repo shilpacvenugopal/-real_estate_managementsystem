@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Profile</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Property Profile</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Property Name</th>
+                <th>Property Address</th>
+                <th>Location</th>
+                <th>Features</th>
+                <th>Unit Type</th>
+                <th>Rent Cost</th>
+                <th>Tenant Name</th>
+                <th>Tenant Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property_details in property_list %}
+                {% for unit_details in property_details.units %}
+                    <tr>
+                        {% if forloop.first %}
+                            <td rowspan="{{ property_details.units|length }}">{{ property_details.name }}</td>
+                            <td rowspan="{{ property_details.units|length }}">{{ property_details.address }}</td>
+                            <td rowspan="{{ property_details.units|length }}">{{ property_details.location }}</td>
+                            <td rowspan="{{ property_details.units|length }}">{{ property_details.features }}</td>
+                        {% endif %}
+                        <td>{{ unit_details.unit_type }}</td>
+                        <td>{{ unit_details.rent_cost }}</td>
+                        <td>{{ unit_details.tenant_name }}</td>
+                        <td>{{ unit_details.address }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
