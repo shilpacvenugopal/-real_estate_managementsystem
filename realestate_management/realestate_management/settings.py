@@ -91,9 +91,9 @@ CSRF_COOKIE_HTTPONLY = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'real_estate',
+        'NAME': '',
         'USER': 'postgres',
-        'PASSWORD': 'Ammu1234',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
